@@ -1,0 +1,63 @@
+﻿********************************************************************************
+
+This file contains important infomations to set up a development environment.
+
+********************************************************************************
+
+
+When configuring the Delphi project file and writing the deploy scripts it was
+intentional to set up a portable development environment so that it is possible
+to check out the repository and start development rightnow.
+
+The following schema shows the directory structure required for the development
+of the AutoCodepage plugin including a short description of the purpose of every
+directory.
+
+Directories whose names start with an underscore either get populated during
+compilation respectively when running the deploy script or have to be filled
+manually (especially the subdirectories of _npp). Since empty directories are
+not allowed on GitHub they are not provided in this repository and thus have to
+be created manually.
+
+The directory _pluginmanager is a special case. Its subdirectory Win64 has to
+contain the master branch of a repository forked from the GitHub repository of
+the 64 bits PluginManager admin system. The URL of this repository currently is
+
+  https://github.com/dinkumoil/npp-plugins-x64
+
+Since the 32 bits PluginManager admin system is based on a web service the re-
+quired XML file for the AutoCodepage plugin is provided here in the repository
+under _pluginmanager\Win32.
+
+
+└───An arbitrary directory on your harddisk
+    │
+    ├───_bin                 Output directory for plugin's DLL and its MD5 file
+    │   ├───Win32              32 bits version of the plugin
+    │   └───Win64              64 bits version of the plugin
+    │
+    ├───_dcu                 Output directory for compiled units
+    │
+    ├───_npp                 Directory for portable installations of Notepad++
+    │   ├───Win32              32 bits version of Notepad++
+    │   └───Win64              64 bits version of Notepad++
+    │
+    ├───_plugin              Output directory for plugin's ZIP files
+    │   ├───Win32              32 bits version of the plugin
+    │   └───Win64              64 bits version of the plugin
+    │
+    ├───_pluginmanager       Directory for files of PluginManager admin system
+    │   ├───Win32              Admin system for 32 bits plugins
+    │   └───Win64              Admin system for 64 bits plugins
+    │
+    ├───data                 Directory for development test files
+    │
+    ├───deploy               Directory for the deploy system
+    │   ├───bin                Required programs
+    │   └───include            VBScript include files
+    │
+    ├───doc                  Directory for the info file deployed with the plugin
+    │
+    └───src                  Directory for source code files
+        ├───BuildScripts       Pre- and post-build scripts
+        └───Lib                Notepad++ plugin framework for Delphi
